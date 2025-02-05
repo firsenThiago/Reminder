@@ -14,6 +14,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupGesture()
     }
     
     private func setup() {
@@ -31,5 +32,20 @@ class SplashViewController: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    @objc
+    private func showLogin() {
+        let loginViewController = LoginViewController()
+        loginViewController.modalPresentationStyle = .overCurrentContext
+        loginViewController.modalTransitionStyle = .crossDissolve
+        self.present(loginViewController, animated: false) {
+            loginViewController.animateShow()
+        }
+    }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showLogin))
+        self.view.addGestureRecognizer(tapGesture)
     }
 }
