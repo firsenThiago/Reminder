@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Reminder
+
+  Created by Thiago Firsen on 05/02/25.
+  
+*/
+
+/// MARK: - Login
+"login.welcome.title" = "Entre para acessar suas receitas";
+"login.email.placeholder" = "email@exemplo.com";
+"login.password.placeholder" = "senha";
+"login.button.title" = "Entrar";
+
+/// MARK: - Home
+
+/// MARK: - Receipts
+
+/// MARK: - New Receipt

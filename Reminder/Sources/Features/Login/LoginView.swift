@@ -19,7 +19,7 @@ class LoginView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Entre para acessar suas receitas"
+        label.text = "login.welcome.title".localized
         label.font = Typography.subHeading
         label.textColor = Colors.gray100
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,7 @@ class LoginView: UIView {
     
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "email@exemplo.com"
+        textField.placeholder = "login.email.placeholder".localized
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -36,7 +36,7 @@ class LoginView: UIView {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "senha"
+        textField.placeholder = "login.password.placeholder".localized
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class LoginView: UIView {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Entrar", for: .normal)
+        button.setTitle("login.button.title".localized, for: .normal)
         button.backgroundColor = Colors.primaryRedBase
         button.layer.cornerRadius = Metrics.tiny
         button.translatesAutoresizingMaskIntoConstraints = false
