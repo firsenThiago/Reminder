@@ -9,6 +9,14 @@ import UIKit
 
 class SplashView: UIView {
     
+    private let logoImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "logo")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     init() {
         super.init(frame: .zero)
         setupUI()
@@ -18,12 +26,16 @@ class SplashView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI() {
-        self.backgroundColor = .blue
+    private func setupUI() {        
+        self.addSubview(logoImageView)
+
         setupConstraints()
     }
     
     private func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
 }
