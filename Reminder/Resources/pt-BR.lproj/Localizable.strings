@@ -8,8 +8,10 @@
 
 /// MARK: - Login
 "login.welcome.title" = "Entre para acessar suas receitas";
+"login.email.label" = "E-mail";
 "login.email.placeholder" = "email@exemplo.com";
-"login.password.placeholder" = "senha";
+"login.password.placeholder" = "";
+"login.password.label" = "Senha";
 "login.button.title" = "Entrar";
 
 /// MARK: - Home
