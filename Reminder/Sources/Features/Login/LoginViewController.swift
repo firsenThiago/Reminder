@@ -10,10 +10,12 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let contentView = LoginView()
+    let viewModel = LoginViewModel()
     var handleAreaHeight: CGFloat = 50.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contentView.delegate = self
         setup()
         setupGesture()
     }
@@ -51,5 +53,11 @@ class LoginViewController: UIViewController {
         }) { _ in
             completion?()
         }
+    }
+}
+
+extension LoginViewController: LoginViewDelegate {
+    func sendLoginData(user: String, password: String) {
+        viewModel.doAuth(username: user, password: password)
     }
 }

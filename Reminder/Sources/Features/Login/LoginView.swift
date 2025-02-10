@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginView: UIView {
+    public weak var delegate: LoginViewDelegate?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -62,6 +63,7 @@ class LoginView: UIView {
         button.setTitle("login.button.title".localized, for: .normal)
         button.backgroundColor = Colors.primaryRedBase
         button.layer.cornerRadius = Metrics.medium
+        button.addTarget(self, action: #selector(didTapped), for: .touchUpInside)
         button.titleLabel?.font = Typography.subHeading
         button.tintColor = Colors.gray800
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -117,5 +119,12 @@ class LoginView: UIView {
             loginButton.heightAnchor.constraint(equalToConstant: Metrics.buttonSize)
             
         ])
+    }
+    
+    @objc
+    private func didTapped() {
+        let password = passwordTextField.text ?? ""
+        let user = emailTextField.text ?? ""
+        delegate?.sendLoginData(user: user, password: password)
     }
 }
