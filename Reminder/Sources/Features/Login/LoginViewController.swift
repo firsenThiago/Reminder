@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    var mainNavigation: UINavigationController?
     let contentView = LoginView()
     let viewModel = LoginViewModel()
     var handleAreaHeight: CGFloat = 50.0
@@ -58,6 +59,12 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginViewDelegate {
     func sendLoginData(user: String, password: String) {
-        viewModel.doAuth(username: user, password: password)
+        viewModel.doAuth(username: user, password: password) { [weak self] in
+            guard let self else { return }
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .blue
+            self.dismiss(animated: false)
+            self.mainNavigation?.pushViewController(viewController, animated: true)
+        }
     }
 }

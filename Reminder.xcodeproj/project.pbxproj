@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BC0A082508E91892701C18F2 /* Pods_Reminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84322DAFE4E268E3D93E66ED /* Pods_Reminder.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		48A6C5B8C9D42777409C30E3 /* Pods-Reminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reminder.debug.xcconfig"; path = "Target Support Files/Pods-Reminder/Pods-Reminder.debug.xcconfig"; sourceTree = "<group>"; };
 		6B27957A2D51B14700C2C018 /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84322DAFE4E268E3D93E66ED /* Pods_Reminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3680EFC61D8FCD64036E9A /* Pods-Reminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reminder.release.xcconfig"; path = "Target Support Files/Pods-Reminder/Pods-Reminder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC0A082508E91892701C18F2 /* Pods_Reminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +55,8 @@
 			children = (
 				6B27957C2D51B14700C2C018 /* Reminder */,
 				6B27957B2D51B14700C2C018 /* Products */,
+				E209320DF4604CDFD80D0A24 /* Pods */,
+				9565CD37E28C663C65354389 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +68,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9565CD37E28C663C65354389 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84322DAFE4E268E3D93E66ED /* Pods_Reminder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E209320DF4604CDFD80D0A24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48A6C5B8C9D42777409C30E3 /* Pods-Reminder.debug.xcconfig */,
+				AC3680EFC61D8FCD64036E9A /* Pods-Reminder.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +92,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B27958D2D51B14900C2C018 /* Build configuration list for PBXNativeTarget "Reminder" */;
 			buildPhases = (
+				5CDE7525A422D6E2915EE9BD /* [CP] Check Pods Manifest.lock */,
 				6B2795762D51B14700C2C018 /* Sources */,
 				6B2795772D51B14700C2C018 /* Frameworks */,
 				6B2795782D51B14700C2C018 /* Resources */,
+				7A936872B1C236BB821EB3ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +106,6 @@
 				6B27957C2D51B14700C2C018 /* Reminder */,
 			);
 			name = Reminder;
-			packageProductDependencies = (
-			);
 			productName = Reminder;
 			productReference = 6B27957A2D51B14700C2C018 /* Reminder.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +155,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5CDE7525A422D6E2915EE9BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Reminder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A936872B1C236BB821EB3ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reminder/Pods-Reminder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reminder/Pods-Reminder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reminder/Pods-Reminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6B2795762D51B14700C2C018 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -141,12 +210,14 @@
 /* Begin XCBuildConfiguration section */
 		6B27958E2D51B14900C2C018 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48A6C5B8C9D42777409C30E3 /* Pods-Reminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BV8RCTWB4S;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Reminder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -168,12 +239,14 @@
 		};
 		6B27958F2D51B14900C2C018 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC3680EFC61D8FCD64036E9A /* Pods-Reminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BV8RCTWB4S;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Reminder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

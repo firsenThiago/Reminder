@@ -39,6 +39,7 @@ class SplashViewController: UIViewController {
         let loginViewController = LoginViewController()
         loginViewController.modalPresentationStyle = .overCurrentContext
         loginViewController.modalTransitionStyle = .crossDissolve
+        loginViewController.mainNavigation = self.navigationController
         self.present(loginViewController, animated: false) {
             loginViewController.animateShow()
         }
