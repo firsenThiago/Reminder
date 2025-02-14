@@ -9,10 +9,19 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var mainNavigation: UINavigationController?
     let contentView = LoginView()
     let viewModel = LoginViewModel()
     var handleAreaHeight: CGFloat = 50.0
+    public weak var flowDelegate: LoginFlowDelegate?
+    
+    init(flowDelegate: LoginFlowDelegate) {
+        self.flowDelegate = flowDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +69,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginViewDelegate {
     func sendLoginData(user: String, password: String) {
         viewModel.doAuth(username: user, password: password) { [weak self] in
-            guard let self else { return }
-            let viewController = UIViewController()
-            viewController.view.backgroundColor = .blue
-            self.dismiss(animated: false)
-            self.mainNavigation?.pushViewController(viewController, animated: true)
+            self?.flowDelegate?.navigateToHome()
         }
     }
 }
