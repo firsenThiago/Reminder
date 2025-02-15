@@ -9,10 +9,15 @@ import UIKit
 
 class ReminderFlowController {
     private var navigationController: UINavigationController?
+    private let viewControllerFactory: ViewControllersFactoryProtocol
+    
+    init(viewControllerFactory: ViewControllersFactoryProtocol) {
+        self.viewControllerFactory = viewControllerFactory
+    }
     
     //MARK: - startFlow
     func start() -> UINavigationController? {
-        let startViewController = SplashViewController(flowDelegate: self)
+        let startViewController = viewControllerFactory.makeSplashViewController(flowDelegate: self)
         self.navigationController = UINavigationController(rootViewController: startViewController)
         return navigationController
     }
@@ -29,7 +34,7 @@ extension ReminderFlowController: LoginFlowDelegate {
 
 extension ReminderFlowController: SplashFlowDelegate {
     func openLoginBottomSheet() {
-        let loginViewController = LoginViewController(flowDelegate: self)
+        let loginViewController = viewControllerFactory.makeLoginViewController(flowDelegate: self)
         loginViewController.modalPresentationStyle = .overCurrentContext
         loginViewController.modalTransitionStyle = .crossDissolve
         navigationController?.present(loginViewController, animated: false) {

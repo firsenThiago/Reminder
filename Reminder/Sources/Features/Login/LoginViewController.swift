@@ -9,12 +9,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let contentView = LoginView()
-    let viewModel = LoginViewModel()
+    let contentView: LoginView
+    let viewModel: LoginViewModel
     var handleAreaHeight: CGFloat = 50.0
     public weak var flowDelegate: LoginFlowDelegate?
     
-    init(flowDelegate: LoginFlowDelegate) {
+    init(contentView: LoginView, viewModel: LoginViewModel, flowDelegate: LoginFlowDelegate) {
+        self.contentView = contentView
+        self.viewModel = viewModel
         self.flowDelegate = flowDelegate
         super.init(nibName: nil, bundle: nil)
     }
