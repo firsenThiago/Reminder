@@ -8,5 +8,5 @@
 import UIKit
 
 protocol LoginViewDelegate: AnyObject {
-    func sendLoginData(user: String, password: String)
+    func sendLoginData(email: String, password: String)
 }

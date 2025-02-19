@@ -25,7 +25,7 @@ class ReminderFlowController {
 
 extension ReminderFlowController: LoginFlowDelegate {
     func navigateToHome() {
-        self.navigationController?.dismiss(animated: true)
+        self.navigationController?.dismiss(animated: false)
         let viewController = UIViewController()
         viewController.view.backgroundColor = .systemBlue
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -40,5 +40,11 @@ extension ReminderFlowController: SplashFlowDelegate {
         navigationController?.present(loginViewController, animated: false) {
             loginViewController.animateShow()
         }
+    }
+    
+    func goToHome() {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemBlue
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

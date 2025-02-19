@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     }
     
     private func setupGesture() {
-
+        
     }
     
     private func handlePanGesture() {
@@ -66,12 +66,45 @@ class LoginViewController: UIViewController {
             completion?()
         }
     }
+    
+    private func presentSaveLoginAlert(email: String) {
+        let alertController = UIAlertController(title: "Salvar acesso",
+                                                message: "Deseja salvar seu acesso?",
+                                                preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Sim", style: .default) { [weak self] _ in
+            let user = User(email: email, isUserSaved: true)
+            UserDefaultsManager.saveUser(user: user)
+            self?.flowDelegate?.navigateToHome()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Não", style: .cancel) { [weak self] _ in
+            self?.flowDelegate?.navigateToHome()
+        }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true)
+    }
+    
+    private func presentErrorAlert(message: String) {
+        let alertController = UIAlertController(title: "Erro ao executar login",
+                                                message: message,
+                                                preferredStyle: .alert)
+        
+        let retryAction = UIAlertAction(title: "Fechar", style: .default)
+        
+        alertController.addAction(retryAction)
+        
+        self.present(alertController, animated: true)
+    }
 }
 
 extension LoginViewController: LoginViewDelegate {
-    func sendLoginData(user: String, password: String) {
-        viewModel.doAuth(username: user, password: password) { [weak self] in
-            self?.flowDelegate?.navigateToHome()
+    func sendLoginData(email: String, password: String) {
+        viewModel.doAuth(email: email, password: password) { [weak self] errorMessage in
+            self?.presentErrorAlert(message: "Erro ao tentar realizar login, verifique as credenciais digitadas")
+        } handleSuccess: { _ in
+            self.presentSaveLoginAlert(email: email)
         }
     }
 }

@@ -124,7 +124,7 @@ class LoginView: UIView {
     @objc
     private func didTapped() {
         let password = passwordTextField.text ?? ""
-        let user = emailTextField.text ?? ""
-        delegate?.sendLoginData(user: user, password: password)
+        let email = emailTextField.text ?? ""
+        delegate?.sendLoginData(email: email, password: password)
     }
 }

@@ -10,12 +10,14 @@ import Firebase
 
 class LoginViewModel {    
     
-    func doAuth(username: String, password: String, completion: @escaping (() -> Void)) {
-        Auth.auth().signIn(withEmail: username, password: password) { [weak self ] authDataResult, error in
+    func doAuth(email: String, password: String,
+                handleError: @escaping (String) -> Void,
+                handleSuccess: @escaping (String) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { authDataResult, error in
             if let error = error {
-                print("Autenticação falhou - \(error)")
+                handleError(error.localizedDescription)
             } else {
-                completion()
+                handleSuccess(email)
             }
         }
     }
