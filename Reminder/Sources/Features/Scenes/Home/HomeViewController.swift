@@ -30,14 +30,14 @@ class HomeViewController: UIViewController {
     }
     
     private func setupBindView() {
-        self.view = contentView
+        view.addSubview(contentView)
     }
     
     private func setup() {
-        buildHierarchy()
+        setupConstraints()
     }
     
-    private func buildHierarchy() {
+    private func setupConstraints() {
         setupContentViewToBounds(contentView: contentView)
     }
 }
