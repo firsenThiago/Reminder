@@ -7,4 +7,5 @@
 
 protocol ViewModelsFactoryProtocol: AnyObject {
     func makeLoginViewModel() -> LoginViewModel
+    func makeHomeViewModel() -> HomeViewModel
 }

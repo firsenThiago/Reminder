@@ -10,4 +10,9 @@ final class ViewModelsFactory: ViewModelsFactoryProtocol {
         let viewModel = LoginViewModel()
         return viewModel
     }
+    
+    func makeHomeViewModel() -> HomeViewModel {
+        let viewModel = HomeViewModel()
+        return viewModel
+    }
 }

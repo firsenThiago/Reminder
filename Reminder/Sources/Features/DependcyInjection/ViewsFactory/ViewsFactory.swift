@@ -15,4 +15,9 @@ final class ViewsFactory: ViewsFactoryProtocol {
         let view = SplashView()
         return view
     }
+    
+    func makeHomeView() -> HomeView {
+        let view = HomeView()
+        return view
+    }
 }
