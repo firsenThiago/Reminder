@@ -16,6 +16,9 @@
 
 /// MARK: - Home
 
+"home.welcome.label" = "Boas vindas";
+"home.feedback.button.title" = "Avaliar";
+
 /// MARK: - Receipts
 
 /// MARK: - New Receipt

@@ -12,7 +12,7 @@ class LoginView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "login.welcome.title".localized
+        label.text = Text.loginWelcomeTitle
         label.font = Typography.subHeading
         label.textColor = Colors.gray100
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +21,7 @@ class LoginView: UIView {
     
     private let emailTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "login.email.label".localized
+        label.text = Text.loginEmailLabel
         label.font = Typography.label
         label.textColor = Colors.gray100
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +30,7 @@ class LoginView: UIView {
     
     private let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "login.email.placeholder".localized
+        textField.placeholder = Text.loginEmailPlaceholder
         textField.borderStyle = .roundedRect
         textField.textColor = Colors.gray200
         textField.font = Typography.input
@@ -40,7 +40,7 @@ class LoginView: UIView {
     
     private let passwordTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "login.password.label".localized
+        label.text = Text.loginPasswordLabel
         label.font = Typography.label
         label.textColor = Colors.gray100
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ class LoginView: UIView {
     
     private let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "login.password.placeholder".localized
+        textField.placeholder = Text.loginPasswordPlaceholder
         textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         textField.textColor = Colors.gray200
@@ -60,7 +60,7 @@ class LoginView: UIView {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("login.button.title".localized, for: .normal)
+        button.setTitle(Text.LoginButtonTitle, for: .normal)
         button.backgroundColor = Colors.primaryRedBase
         button.layer.cornerRadius = Metrics.medium
         button.addTarget(self, action: #selector(didTapped), for: .touchUpInside)

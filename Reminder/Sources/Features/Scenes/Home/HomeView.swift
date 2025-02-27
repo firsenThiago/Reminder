@@ -42,7 +42,7 @@ class HomeView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Typography.heading
         label.textColor = Colors.gray200
-        label.text = "Boas vindas"
+        label.text = Text.homeWelcomeLabel
         return label
     }()
     
@@ -60,7 +60,7 @@ class HomeView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = Metrics.medium
         button.tintColor = Colors.gray800
-        button.setTitle("Avaliar", for: .normal)
+        button.setTitle(Text.homeFeedbackButtonTitle, for: .normal)
         button.titleLabel?.font = Typography.subHeading
         button.backgroundColor = Colors.gray100
         return button
