@@ -6,5 +6,5 @@
 //
 
 public protocol HomeFlowDelegate: AnyObject {
-    
+    func logout()
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class HomeView: UIView {
     
+    weak public var delegate: HomeViewDelegate?
+    
     let profileBackground: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -19,12 +21,13 @@ class HomeView: UIView {
     let profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 35
-        imageView.backgroundColor = .red
+        imageView.layer.cornerRadius = Metrics.medium
         imageView.layer.borderColor = Colors.primaryBlueBase.cgColor
         imageView.layer.borderWidth = 1
+        imageView.image = UIImage(named: "user")
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -40,19 +43,20 @@ class HomeView: UIView {
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Typography.heading
+        label.font = Typography.label
         label.textColor = Colors.gray200
         label.text = Text.homeWelcomeLabel
         return label
     }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Typography.label
-        label.textColor = Colors.gray100
-        label.text = "Júlio Santana"
-        return label
+    let nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.font = Typography.heading
+        textField.textColor = Colors.gray100
+        textField.placeholder = "Insira seu nome"
+        textField.returnKeyType = .done
+        return textField
     }()
     
     let feedbackButton: UIButton = {
@@ -78,13 +82,12 @@ class HomeView: UIView {
     private func setup() {
         self.backgroundColor = Colors.gray600
         addSubview(profileBackground)
-        profileBackground.addSubview(profileImage)
-        profileBackground.addSubview(welcomeLabel)
-        profileBackground.addSubview(nameLabel)
-        
+        addSubview(profileImage)
+        addSubview(welcomeLabel)
+        addSubview(nameTextField)
         addSubview(contentBackground)
-        contentBackground.addSubview(feedbackButton)
-        
+        addSubview(feedbackButton)
+
         setupConstraints()
     }
     
@@ -103,10 +106,10 @@ class HomeView: UIView {
             welcomeLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 16),
             welcomeLabel.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 4),
-            nameLabel.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
+            nameTextField.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 4),
+            nameTextField.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
             
-            contentBackground.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 32),
+            contentBackground.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 32),
             contentBackground.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentBackground.bottomAnchor.constraint(equalTo: bottomAnchor),

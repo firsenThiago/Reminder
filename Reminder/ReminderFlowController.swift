@@ -48,5 +48,8 @@ extension ReminderFlowController: SplashFlowDelegate {
 }
 
 extension ReminderFlowController: HomeFlowDelegate {
-    
+    func logout() {
+        self.navigationController?.popViewController(animated: true)
+        self.openLoginBottomSheet()
+    }
 }
