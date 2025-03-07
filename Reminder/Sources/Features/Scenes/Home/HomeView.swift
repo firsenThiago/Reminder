@@ -26,7 +26,6 @@ class HomeView: UIView {
         imageView.layer.cornerRadius = Metrics.medium
         imageView.layer.borderColor = Colors.primaryBlueBase.cgColor
         imageView.layer.borderWidth = 1
-        imageView.image = UIImage(named: "user")
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
@@ -59,6 +58,22 @@ class HomeView: UIView {
         return textField
     }()
     
+    let myPrescriptionCardItem: CardItem = {
+        let cardItem = CardItem(icon: UIImage(named: "paper"),
+                                title: "Minhas receitas",
+                                description: "Acompanhe os medicamentos e gerencie lembretes")
+        cardItem.translatesAutoresizingMaskIntoConstraints = false
+        return cardItem
+    }()
+    
+    let newPrescriptionCardItem: CardItem = {
+        let cardItem = CardItem(icon: UIImage(named: "pills"),
+                                title: "Nova receita",
+                                description: "Cadastre novos lembretes de receitas")
+        cardItem.translatesAutoresizingMaskIntoConstraints = false
+        return cardItem
+    }()
+    
     let feedbackButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +101,8 @@ class HomeView: UIView {
         addSubview(welcomeLabel)
         addSubview(nameTextField)
         addSubview(contentBackground)
+        addSubview(myPrescriptionCardItem)
+        addSubview(newPrescriptionCardItem)
         addSubview(feedbackButton)
 
         setupConstraints()
@@ -113,6 +130,14 @@ class HomeView: UIView {
             contentBackground.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentBackground.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            myPrescriptionCardItem.topAnchor.constraint(equalTo: contentBackground.topAnchor, constant: Metrics.extraLarge),
+            myPrescriptionCardItem.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.high),
+            myPrescriptionCardItem.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.high),
+            
+            newPrescriptionCardItem.topAnchor.constraint(equalTo: myPrescriptionCardItem.bottomAnchor, constant: Metrics.medier),
+            newPrescriptionCardItem.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.high),
+            newPrescriptionCardItem.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.high),
             
             feedbackButton.bottomAnchor.constraint(equalTo: contentBackground.safeAreaLayoutGuide.bottomAnchor, constant: -14),
             feedbackButton.leadingAnchor.constraint(equalTo: contentBackground.leadingAnchor, constant: 32),

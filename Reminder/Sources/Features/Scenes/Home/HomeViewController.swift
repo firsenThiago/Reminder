@@ -36,6 +36,9 @@ class HomeViewController: UIViewController {
         if let user = UserDefaultsManager.loadUserName() {
             contentView.nameTextField.text = user
         }
+        if let image = UserDefaultsManager.loadProfileImage() {
+            contentView.profileImage.image = image
+        }
     }
     
     private func setupNavigationBar() {
@@ -99,8 +102,10 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as? UIImage {
             contentView.profileImage.image = editedImage
+            UserDefaultsManager.saveProfileImage(image: editedImage)
         } else if let originalImage = info[.originalImage] as? UIImage {
             contentView.profileImage.image = originalImage
+            UserDefaultsManager.saveProfileImage(image: originalImage)
         }
         
         dismiss(animated: true)
