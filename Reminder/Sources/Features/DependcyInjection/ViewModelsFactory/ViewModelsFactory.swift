@@ -15,4 +15,9 @@ final class ViewModelsFactory: ViewModelsFactoryProtocol {
         let viewModel = HomeViewModel()
         return viewModel
     }
+    
+    func makeNewReceiptViewModel() -> NewReceiptViewModel {
+        let viewModel = NewReceiptViewModel()
+        return viewModel
+    }
 }

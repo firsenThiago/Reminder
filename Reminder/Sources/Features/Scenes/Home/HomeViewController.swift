@@ -30,6 +30,13 @@ class HomeViewController: UIViewController {
         setup()
         setupImageGesture()
         checkForExistingData()
+        setupActions()
+    }
+    
+    private func setupActions() {
+        contentView.newPrescriptionCardItem.tapAction = { [weak self] in
+            self?.flowDelegate?.goToNewReceipt()
+        }
     }
     
     private func checkForExistingData() {

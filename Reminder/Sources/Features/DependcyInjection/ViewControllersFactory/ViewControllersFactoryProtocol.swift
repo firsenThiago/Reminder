@@ -9,4 +9,5 @@ protocol ViewControllersFactoryProtocol: AnyObject {
     func makeSplashViewController(flowDelegate: SplashFlowDelegate) -> SplashViewController
     func makeLoginViewController(flowDelegate: LoginFlowDelegate) -> LoginViewController
     func makeHomeViewController(flowDelegate: HomeFlowDelegate) -> HomeViewController
+    func makeNewReceiptViewController(flowDelegate: NewReceiptFlowDelegate) -> NewReceiptViewController
 }

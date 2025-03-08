@@ -8,6 +8,7 @@
 import UIKit
 
 class CardItem: UIView {
+    var tapAction: (() -> Void)?
     
     private let iconView: UIView = {
         let view = UIView()
@@ -57,10 +58,22 @@ class CardItem: UIView {
         descriptionLabel.text = description
         setupUI()
         setupConstraints()
+        setupGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.addGestureRecognizer(tapGesture)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    private func handleTap() {
+        tapAction?()
     }
     
     private func setupUI() {

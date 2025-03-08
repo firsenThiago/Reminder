@@ -19,6 +19,7 @@ class ReminderFlowController {
     func start() -> UINavigationController? {
         let startViewController = viewControllerFactory.makeSplashViewController(flowDelegate: self)
         self.navigationController = UINavigationController(rootViewController: startViewController)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         return navigationController
     }
 }
@@ -52,4 +53,13 @@ extension ReminderFlowController: HomeFlowDelegate {
         self.navigationController?.popViewController(animated: true)
         self.openLoginBottomSheet()
     }
+    
+    func goToNewReceipt() {
+        let viewController = viewControllerFactory.makeNewReceiptViewController(flowDelegate: self)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension ReminderFlowController: NewReceiptFlowDelegate {
+    
 }

@@ -9,4 +9,5 @@ protocol ViewsFactoryProtocol: AnyObject {
     func makeLoginView() -> LoginView
     func makeSplashView() -> SplashView
     func makeHomeView() -> HomeView
+    func makeNewReceiptView() -> NewReceiptView
 }

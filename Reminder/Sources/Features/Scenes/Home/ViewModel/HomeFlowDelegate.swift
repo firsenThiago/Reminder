@@ -7,4 +7,5 @@
 
 public protocol HomeFlowDelegate: AnyObject {
     func logout()
+    func goToNewReceipt()
 }
