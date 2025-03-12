@@ -39,6 +39,7 @@ class NewReceiptViewController: UIViewController {
     
     private func setupActions() {
         contentView.backButton.addTarget(self, action: #selector(handleBackButtonTapped), for: .touchUpInside)
+        contentView.addButton.addTarget(self, action: #selector(handleAddButtonTapped), for: .touchUpInside)
     }
     
     private func setupConstraints() {
@@ -48,5 +49,18 @@ class NewReceiptViewController: UIViewController {
     @objc
     private func handleBackButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func handleAddButtonTapped() {
+        let remedy = contentView.remedyInput.getText()
+        let time = contentView.timeInput.getText()
+        let recurrence = contentView.recurrenceInput.getText()
+        let takeNow = true
+
+        viewModel.addReceipt(remedy: remedy,
+                             time: time,
+                             recurrence: recurrence,
+                             takeNow: takeNow)
     }
 }
