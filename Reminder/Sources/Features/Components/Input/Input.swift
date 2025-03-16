@@ -17,7 +17,7 @@ class Input: UIView {
         return label
     }()
     
-    private let textField: UITextField = {
+     let textField: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = Typography.input
