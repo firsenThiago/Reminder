@@ -32,6 +32,25 @@ class MyReceiptsView: UIView {
         return button
     }()
     
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = Typography.heading
+        label.textColor = Colors.primaryBlueBase
+        label.text = "Minhas receitas"
+        return label
+    }()
+    
+    let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = Typography.body
+        label.textColor = Colors.gray200
+        label.text = "Acompanhe seus medicamentos cadastrados e gerencie lembretes"
+        label.numberOfLines = 0
+        return label
+    }()
+    
     let contentBackground: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +74,8 @@ class MyReceiptsView: UIView {
         addSubview(headerBackground)
         addSubview(backButton)
         addSubview(addButton)
+        addSubview(titleLabel)
+        addSubview(descriptionLabel)
         addSubview(contentBackground)
 
         setupConstraints()
@@ -77,7 +98,15 @@ class MyReceiptsView: UIView {
             addButton.heightAnchor.constraint(equalToConstant: 24),
             addButton.widthAnchor.constraint(equalToConstant: 24),
             
-            contentBackground.topAnchor.constraint(equalTo: headerBackground.bottomAnchor, constant: 32),
+            titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: Metrics.medium),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.high),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.high),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Metrics.tiny),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.high),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.high),
+            
+            contentBackground.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 32),
             contentBackground.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentBackground.bottomAnchor.constraint(equalTo: bottomAnchor),
