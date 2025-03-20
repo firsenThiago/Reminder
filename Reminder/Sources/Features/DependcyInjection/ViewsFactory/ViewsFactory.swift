@@ -25,4 +25,9 @@ final class ViewsFactory: ViewsFactoryProtocol {
         let view = NewReceiptView()
         return view
     }
+    
+    func makeMyReceiptsView() -> MyReceiptsView {
+        let view = MyReceiptsView()
+        return view
+    }
 }

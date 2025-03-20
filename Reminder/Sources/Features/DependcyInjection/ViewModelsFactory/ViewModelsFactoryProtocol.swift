@@ -9,4 +9,5 @@ protocol ViewModelsFactoryProtocol: AnyObject {
     func makeLoginViewModel() -> LoginViewModel
     func makeHomeViewModel() -> HomeViewModel
     func makeNewReceiptViewModel() -> NewReceiptViewModel
+    func makeMyReceiptsViewModel() -> MyReceiptsViewModel
 }

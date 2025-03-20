@@ -37,6 +37,10 @@ class HomeViewController: UIViewController {
         contentView.newPrescriptionCardItem.tapAction = { [weak self] in
             self?.flowDelegate?.goToNewReceipt()
         }
+        
+        contentView.myPrescriptionCardItem.tapAction = { [weak self] in
+            self?.flowDelegate?.gotoMyReceipts()
+        }
     }
     
     private func checkForExistingData() {
