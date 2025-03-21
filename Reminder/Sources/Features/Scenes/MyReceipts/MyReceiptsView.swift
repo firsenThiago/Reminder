@@ -9,6 +9,12 @@ import UIKit
 
 class MyReceiptsView: UIView {
     
+    let remedies = [
+        ("Paracetamol", "08:00 AM", "Diário"),
+        ("Ibuprofeno", "12:00 PM", "A cada 8h"),
+        ("Omeprazol", "07:30 AM", "Antes do café")
+    ]
+    
     let headerBackground: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +33,7 @@ class MyReceiptsView: UIView {
     let addButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.setImage(UIImage(named: "add-button"), for: .normal)
         button.tintColor = Colors.primaryBlueBase
         return button
     }()
@@ -60,6 +66,12 @@ class MyReceiptsView: UIView {
         return view
     }()
     
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -77,8 +89,15 @@ class MyReceiptsView: UIView {
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         addSubview(contentBackground)
-
+        contentBackground.addSubview(tableView)
+        
         setupConstraints()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(RemedyCell.self, forCellReuseIdentifier: RemedyCell.identifier)
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
     }
     
     private func setupConstraints() {
@@ -95,8 +114,8 @@ class MyReceiptsView: UIView {
             
             addButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metrics.high),
             addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.high),
-            addButton.heightAnchor.constraint(equalToConstant: 24),
-            addButton.widthAnchor.constraint(equalToConstant: 24),
+            addButton.heightAnchor.constraint(equalToConstant: 40),
+            addButton.widthAnchor.constraint(equalToConstant: 40),
             
             titleLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: Metrics.medium),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.high),
@@ -110,6 +129,48 @@ class MyReceiptsView: UIView {
             contentBackground.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentBackground.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentBackground.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: contentBackground.topAnchor, constant: 16),
+            tableView.leadingAnchor.constraint(equalTo: contentBackground.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: contentBackground.trailingAnchor, constant: -16),
+            tableView.bottomAnchor.constraint(equalTo: contentBackground.bottomAnchor, constant: -16),
         ])
     }
+}
+
+extension MyReceiptsView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RemedyCell.identifier, for: indexPath) as? RemedyCell else {
+            return UITableViewCell()
+        }
+        
+        let (title, time, recurrence) = remedies[indexPath.row]
+        cell.configure(title: title, time: time, recurrence: recurrence)
+        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return remedies.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
+    }
+    
 }

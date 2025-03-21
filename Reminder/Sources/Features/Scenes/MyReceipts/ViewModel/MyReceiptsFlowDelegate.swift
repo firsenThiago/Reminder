@@ -6,4 +6,6 @@
 //
 
 
-public protocol MyReceiptsFlowDelegate: AnyObject {}
+public protocol MyReceiptsFlowDelegate: AnyObject {
+    func navigateToNewReceipt()
+}

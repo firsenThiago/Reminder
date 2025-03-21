@@ -69,4 +69,9 @@ extension ReminderFlowController: NewReceiptFlowDelegate {
     
 }
 
-extension ReminderFlowController: MyReceiptsFlowDelegate {}
+extension ReminderFlowController: MyReceiptsFlowDelegate {
+    func navigateToNewReceipt() {
+        let viewController = viewControllerFactory.makeNewReceiptViewController(flowDelegate: self)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}

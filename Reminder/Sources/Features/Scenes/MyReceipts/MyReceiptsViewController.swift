@@ -34,7 +34,7 @@ class MyReceiptsViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.hidesBackButton = true
         contentView.backButton.addTarget(self, action: #selector(handleBackButtonTapped), for: .touchUpInside)
-        contentView.backButton.addTarget(self, action: #selector(handleAddButtonTapped), for: .touchUpInside)
+        contentView.addButton.addTarget(self, action: #selector(handleAddButtonTapped), for: .touchUpInside)
     }
     
     private func setup() {
@@ -47,7 +47,9 @@ class MyReceiptsViewController: UIViewController {
     }
     
     @objc
-    private func handleAddButtonTapped() {}
+    private func handleAddButtonTapped() {
+        flowDelegate?.navigateToNewReceipt()
+    }
     
     @objc
     private func handleBackButtonTapped() {
