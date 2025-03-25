@@ -9,12 +9,6 @@ import UIKit
 
 class MyReceiptsView: UIView {
     
-    let remedies = [
-        ("Paracetamol", "08:00 AM", "Diário"),
-        ("Ibuprofeno", "12:00 PM", "A cada 8h"),
-        ("Omeprazol", "07:30 AM", "Antes do café")
-    ]
-    
     let headerBackground: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -92,12 +86,6 @@ class MyReceiptsView: UIView {
         contentBackground.addSubview(tableView)
         
         setupConstraints()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(RemedyCell.self, forCellReuseIdentifier: RemedyCell.identifier)
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
     }
     
     private func setupConstraints() {
@@ -136,41 +124,4 @@ class MyReceiptsView: UIView {
             tableView.bottomAnchor.constraint(equalTo: contentBackground.bottomAnchor, constant: -16),
         ])
     }
-}
-
-extension MyReceiptsView: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RemedyCell.identifier, for: indexPath) as? RemedyCell else {
-            return UITableViewCell()
-        }
-        
-        let (title, time, recurrence) = remedies[indexPath.row]
-        cell.configure(title: title, time: time, recurrence: recurrence)
-        
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return remedies.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
-    }
-    
 }

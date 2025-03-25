@@ -21,7 +21,7 @@ class DBHelper {
         let fileURL = try! FileManager.default
             .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("reminder.sqlite")
-        
+        print(fileURL)
         if sqlite3_open(fileURL.path(), &db) != SQLITE_OK {
             print("Erro ao abrir Banco de Dados")
         }
@@ -70,5 +70,23 @@ class DBHelper {
             print("Insert statement failed")
         }
         sqlite3_finalize(statement)
+    }
+    
+    func fetchReceipts() -> [Medicine] {
+        let fetchQuery = "SELECT remedy, time, recurrence FROM Receipts"
+        var statement: OpaquePointer?
+        var receipts: [Medicine] = []
+        if sqlite3_prepare(db, fetchQuery, -1, &statement, nil) == SQLITE_OK {
+            while sqlite3_step(statement) == SQLITE_ROW {
+                let remedy = String(cString: sqlite3_column_text(statement, 0))
+                let time = String(cString: sqlite3_column_text(statement, 1))
+                let recurrence = String(cString: sqlite3_column_text(statement, 2))
+                receipts.append(Medicine(remedy: remedy, time: time, recurrence: recurrence))
+            }
+        } else {
+            print("SELECT statment failed")
+        }
+        sqlite3_finalize(statement)
+        return receipts
     }
 }
